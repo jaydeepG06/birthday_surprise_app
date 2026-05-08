@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+overflow:hidden;
+
+background:
+linear-gradient(rgba(0,0,0,0.7),
+rgba(0,0,0,0.9)),
+url("https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070");
+
+background-size:cover;
+background-position:center;
+
+font-family:'Cinzel', serif;
+
+color:white;
+}
+
+/* TITLE */
+
+.title{
+
+text-align:center;
+
+font-size:42px;
+
+padding-top:40px;
+
+letter-spacing:2px;
+
+text-shadow:0 0 15px rgba(255,255,255,0.4);
+
+animation:fadeIn 2s ease;
+
+}
+
+/* CONTAINER */
+
+.container{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:80px;
+
+height:75vh;
+
+}
+
+/* CASKETS */
+
+.casket{
+
+width:170px;
+height:240px;
+
+border-radius:12px;
+
+cursor:pointer;
+
+position:relative;
+
+transition:0.4s;
+
+animation:float 3s ease-in-out infinite;
+
+box-shadow:
+0 0 20px rgba(255,255,255,0.2);
+
+}
+
+/* BOOK SPINE */
+
+.casket::before{
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+top:0;
+
+width:18px;
+
+height:100%;
+
+background:rgba(0,0,0,0.25);
+
+border-top-left-radius:12px;
+border-bottom-left-radius:12px;
+
+}
+
+/* INNER GLOW */
+
+.casket::after{
+
+content:"";
+
+position:absolute;
+
+inset:8px;
+
+border:2px solid rgba(255,255,255,0.25);
+
+border-radius:8px;
+
+}
+
+/* HOVER */
+
+.casket:hover{
+
+transform:
+translateY(-20px)
+scale(1.06);
+
+box-shadow:
+0 0 35px rgba(255,255,255,0.5);
+
+}
+
+/* BRONZE */
+
+.bronze{
+
+background:
+linear-gradient(
+145deg,
+#b87333,
+#8b4513
+);
+
+}
+
+/* SILVER */
+
+.silver{
+
+background:
+linear-gradient(
+145deg,
+#d9d9d9,
+#8f8f8f
+);
+
+}
+
+/* GOLD */
+
+.gold{
+
+background:
+linear-gradient(
+145deg,
+#ffd700,
+#b8860b
+);
+
+}
+
+/* LABELS */
+
+.label{
+
+position:absolute;
+
+bottom:18px;
+
+width:100%;
+
+text-align:center;
+
+font-size:22px;
+
+letter-spacing:2px;
+
+text-shadow:0 0 10px black;
+
+}
+
+/* FLOAT */
+
+@keyframes float{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-15px);
+}
+
+}
+
+/* FADE */
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(-20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="title">
+
+Thee may anon chooseth the caskets mine own dame ✨
+
+</div>
+
+<div class="container">
+
+<!-- BRONZE -->
+<div class="casket bronze"
+onclick="location.href='/bronze'">
+
+<div class="label">
+BRONZE
+</div>
+
+</div>
+
+<!-- SILVER -->
+<div class="casket silver"
+onclick="location.href='/silver'">
+
+<div class="label">
+SILVER
+</div>
+
+</div>
+
+<!-- GOLD -->
+<div class="casket gold"
+onclick="location.href='/gold'">
+
+<div class="label">
+GOLD
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

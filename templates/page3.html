@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+
+body{
+margin:0;
+background:black;
+color:#00ff88;
+font-family:Courier New;
+overflow-x:hidden;
+padding:30px;
+}
+
+/* TITLE */
+
+.title{
+
+text-align:center;
+font-size:38px;
+margin-top:10px;
+margin-bottom:20px;
+
+color:white;
+
+text-shadow:0 0 15px #00ff88;
+
+}
+
+/* CALL GIF */
+
+.call-gif{
+
+display:block;
+
+margin:auto;
+
+width:260px;
+
+border-radius:20px;
+
+box-shadow:0 0 20px rgba(255,255,255,0.3);
+
+}
+
+/* CHAT AREA */
+
+#chat{
+
+margin-top:40px;
+
+font-size:24px;
+
+line-height:2;
+
+white-space:pre-wrap;
+
+max-width:1000px;
+
+margin-left:auto;
+margin-right:auto;
+
+}
+
+/* BUTTONS */
+
+button{
+
+padding:14px 24px;
+
+margin:20px;
+
+font-size:18px;
+
+border:none;
+
+border-radius:12px;
+
+cursor:pointer;
+
+transition:0.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.08);
+
+}
+
+/* FINAL SECTION */
+
+.final-box{
+
+text-align:center;
+
+margin-top:50px;
+
+animation:fadeIn 2s ease;
+
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="title">
+
+Calling Aunty 📞
+
+</div>
+
+<!-- CALLING GIF -->
+
+<img 
+src="/static/gifs/calling.gif"
+class="call-gif"
+>
+
+<!-- CHAT -->
+
+<div id="chat"></div>
+
+<script>
+
+const lines = [
+
+"ME : hello aunty joydeep bolchi",
+
+"AUNTY : hain joydeep bolo",
+
+"ME : kemon achen aunty apnar sorir kemon ache",
+
+"AUNTY : Hain bhalo bhalo tomar maa bhalo ache",
+
+"ME : hain aunty maa bhalo ache, bolchilam aunty kal boishakhi er birthday and o tih bari theke beroe e na, and sotti bolte aekhon na jmt te keo ache na amader semni frnds ache amrai ache toh bhabchilam kal amra ektu ghure ashi or bhalo lagbe",
+
+"AUNTY : hain ami to boli e oke ghure aye kintu o jetei chai na thik ache chole esho kintu joldi r kothai jabe",
+
+"ME : hain hain aunt apni chinta korben na 7:30 obdi bari pohche debo boishakhi k",
+
+"AUNTY : acha thik ache",
+
+"ME : Hain aunty, thik ache aunty rakhchi"
+
+];
+
+let lineIndex = 0;
+
+let charIndex = 0;
+
+const chat = document.getElementById("chat");
+
+function typeWriter(){
+
+if(lineIndex < lines.length){
+
+if(charIndex < lines[lineIndex].length){
+
+chat.innerHTML += lines[lineIndex].charAt(charIndex);
+
+charIndex++;
+
+setTimeout(typeWriter,35);
+
+}
+
+else{
+
+chat.innerHTML += "<br><br>";
+
+lineIndex++;
+
+charIndex = 0;
+
+setTimeout(typeWriter,900);
+
+}
+
+}
+
+else{
+
+// CALL END SOUND
+
+let audio = new Audio("/static/audio/call_beep.mp3");
+
+audio.play();
+
+// SHOW FINAL SECTION
+
+chat.innerHTML += `
+
+<div class="final-box">
+
+<h1 style="color:white;">
+
+ab bol ab boollll naaaa 😏
+
+</h1>
+
+<button onclick="location.href='/main'">
+
+thik ache bba choo ❤️
+
+</button>
+
+<button id="noBtn">
+
+na jabo na
+
+</button>
+
+</div>
+
+`;
+
+// IMPOSSIBLE BUTTON
+
+let btn = document.getElementById("noBtn");
+
+btn.addEventListener("mouseover", () => {
+
+btn.innerText =
+"chup chap click kor ono option ae 😏";
+
+btn.style.position = "relative";
+
+btn.style.left =
+(Math.random()*200 - 100) + "px";
+
+btn.style.top =
+(Math.random()*80 - 40) + "px";
+
+});
+
+}
+
+}
+
+typeWriter();
+
+</script>
+
+</body>
+</html>
